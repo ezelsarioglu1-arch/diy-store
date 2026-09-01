@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalemhane — Kırtasiye & Hobi Mağazası</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">✏️ Kalemhane</div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Ürün veya kategori ara...">
+      </div>
+      <div class="cart-btn" id="cartBtn">
+        🛒 Sepetim (<span id="cartCount">0</span>)
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Yaratıcılığınızı Renklendirin</h1>
+      <p>Kırtasiye, ofis ve hobi dünyasına dair aradığınız her şey en uygun fiyatlarla burada.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="category-filters" id="categoryFilters">
+      <button class="filter-btn active" data-category="all">Tümü</button>
+      <button class="filter-btn" data-category="Yazı Gereçleri">Yazı Gereçleri</button>
+      <button class="filter-btn" data-category="Defter & Kağıt">Defter & Kağıt</button>
+      <button class="filter-btn" data-category="Sanat & Hobi">Sanat & Hobi</button>
+      <button class="filter-btn" data-category="Masaüstü">Masaüstü</button>
+    </div>
+
+    <section class="products-grid" id="productsGrid"></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Kalemhane Kırtasiye. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
