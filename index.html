@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalemhane — Kırtasiye, Ofis ve Hobi Marketi</title>
+<meta name="description" content="Kalemhane — defter, kalem, dosyalama, ofis, sanat ve okul malzemelerinde 55 şube ve 4000+ ürünle Türkiye'nin en geniş kırtasiye mağazası. Uygun fiyat, hızlı teslimat.">
+<meta name="keywords" content="kırtasiye, ofis malzemeleri, defter, kalem, okul çantası, kırtasiye mağazası, Ankara kırtasiye">
+<meta name="author" content="Kalemhane">
+
+<!-- Sosyal medya / WhatsApp paylaşım önizlemesi -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kalemhane — Kırtasiye, Ofis ve Hobi Marketi">
+<meta property="og:description" content="55 şube, 4000+ ürün — kırtasiyede aradığın her şey hep indirimde.">
+<meta property="og:image" content="https://images.pexels.com/photos/272980/pexels-photo-272980.jpeg?auto=compress&cs=tinysrgb&w=1200">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kalemhane — Kırtasiye, Ofis ve Hobi Marketi">
+<meta name="twitter:description" content="55 şube, 4000+ ürün — kırtasiyede aradığın her şey hep indirimde.">
+<meta name="twitter:image" content="https://images.pexels.com/photos/272980/pexels-photo-272980.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -15,17 +30,39 @@
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a href="#" class="brand">Kalemhane</a>
+    <button id="hamburgerBtn" class="hamburger" aria-label="Menü">☰</button>
     <div class="searchbar">
-      <input type="text" placeholder="Ürün, kategori veya marka ara...">
+      <input type="text" id="searchInput" placeholder="Ürün, kategori veya marka ara...">
       <button aria-label="Ara">🔍</button>
     </div>
-    <nav class="nav">
+    <div class="header-icons">
+      <button id="favBtn" class="icon-btn" aria-label="Favoriler">♥ <span id="favCount">0</span></button>
+      <button id="cartBtn" class="icon-btn" aria-label="Sepet">🛒 <span id="cartCount">0</span></button>
+    </div>
+    <nav class="nav" id="mainNav">
       <a href="#urunler">Ürünler</a>
       <a href="#subeler">Şubeler</a>
       <a href="#iletisim">İletişim</a>
     </nav>
   </div>
 </header>
+
+<div id="drawerOverlay" class="drawer-overlay hidden"></div>
+<aside id="cartDrawer" class="drawer">
+  <div class="drawer-header">
+    <h3>Sepetim</h3>
+    <button id="closeCart" class="icon-btn">✕</button>
+  </div>
+  <div id="cartItems" class="drawer-items"></div>
+  <div class="drawer-footer">
+    <strong>Toplam: <span id="cartTotal">0 TL</span></strong>
+    <button id="whatsappOrderBtn" class="whatsapp-btn">📱 WhatsApp'tan Sipariş Ver</button>
+  </div>
+</aside>
+
+<div id="productModalOverlay" class="modal-overlay hidden">
+  <div class="product-modal" id="productModal"></div>
+</div>
 
 <section class="hero">
   <div class="wrap hero-inner">
@@ -46,6 +83,20 @@
 <section class="cat-rail">
   <div class="wrap">
     <div class="pill-row" id="pill-row"></div>
+    <div class="sort-row">
+      <label>Sırala:
+        <select id="sortSelect">
+          <option value="default">Önerilen</option>
+          <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+          <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+          <option value="rating-desc">Puana Göre</option>
+          <option value="discount-desc">İndirime Göre</option>
+        </select>
+      </label>
+      <label>Maks. fiyat: <span id="maxPriceLabel">400 TL</span>
+        <input type="range" id="priceRange" min="15" max="400" step="5" value="400">
+      </label>
+    </div>
   </div>
 </section>
 
